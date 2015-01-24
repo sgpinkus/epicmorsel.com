@@ -1,0 +1,54 @@
+<!DOCTYPE HTML>
+<html lang="en">
+  <head>
+    <title>Epic Morsel Site</title>
+    <meta name="keywords" content="epic morsel epicmorsel">
+    <link href="/css/default.css" rel="stylesheet" type="text/css" />
+    <link href="/css/index.css" rel="stylesheet" type="text/css" />    
+    <noscript><meta http-equiv="Refresh" content="0;URL=/components/no-script.html" /></noscript>    
+    <script type="text/javascript" src="/js/jquery.js"></script>
+    <script type="text/javascript">
+    <!--
+        
+      jQuery(document).ready(function()
+      {
+        reset();
+        tweak(1);
+      });
+      
+      function tweak(what) {
+        switch(what) {
+          case 0,1,2,3,4: jQuery('.left-eye').text('-'); break;
+          case 5,6: jQuery('.right-eye').text('-');  break;
+          case 7: jQuery('.eye *').text('-'); break;
+          default:
+        }
+        next = Math.round(Math.random() * 500) + 100;
+        what = next%8;
+        setTimeout(function(){tweak(what)}, next);
+        setTimeout(reset,100);
+      }
+      
+      function reset() {
+        jQuery('.eye *').text('0');
+        jQuery('.mo *').text('~');
+      }
+
+    //-->  
+    </script>
+  </head>
+  <body>
+      <div class="centered-container">
+        <div class="centered-content">  
+<pre style='text-align:center'>
+<span class='eye'><span class='left-eye'>0</span><span class='right-eye'>0</span></span>
+<span class='mo'><span class='left-mo'>~</span><span class='right-mo'>~</span></span>
+</pre>
+        </div>
+      </div>
+    <script type="text/javascript">
+    <!--
+    //-->
+    </script>
+  </body>
+</html>
