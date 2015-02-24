@@ -1,3 +1,4 @@
+* { border: 0; padding: 0; margin: 0; }
 html, body { margin: 0; border: 0; height: 100%; }
 html { background-color:#FFF; background-image: url( /images/bg_strip_gray80_to_white.png ); background-repeat: repeat-x; }
 body { height:100%; width: 80%; margin: 0 auto; border: solid 1px #AAA; padding: 1em; position: relative; }
