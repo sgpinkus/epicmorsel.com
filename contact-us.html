@@ -247,6 +247,7 @@
           try {
             const body = await this._fetch('https://mail-me.epicmorsel.com/api/mail-me/', {
               method: 'post',
+              credentials: 'include',
               body: JSON.stringify({
                 projectId,
                 email,
@@ -291,7 +292,7 @@
         },
         async fetchCaptcha(forceNew = 0) {
           this.captcha = undefined;
-          const body = await this._fetch(`https://mail-me.epicmorsel.com/api/captcha?forceNew=0`);
+          const body = await this._fetch(`https://mail-me.epicmorsel.com/api/captcha?forceNew=0`, { credentials: 'include' });
           if(body.img) {
             this.captcha = body;
           } else if(body.valid) {
