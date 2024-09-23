@@ -81,6 +81,8 @@ article > p {
 
 .header {
   width: 996px;
+  padding-left: 22px;
+  padding-right: 22px;
 }
 
 .header svg {
