@@ -11,12 +11,12 @@
 }
 
 a:link {
-  color: lightsalmon;
+  color: lightsalmon !important;
   text-decoration: none;
 }
 
 a:visited {
-  color: inherit;
+  color: lightsalmon;
 }
 
 html, body {
@@ -45,11 +45,11 @@ header, footer {
 }
 
 header {
-  border-bottom: solid 1px salmon;
+  border-bottom: solid 1px lightsalmon;
 }
 
 footer {
-  border-top: solid 1px salmon;
+  border-top: solid 1px lightsalmon;
 }
 
 article {
@@ -85,6 +85,6 @@ article > p {
 
 .header svg {
   height: 24px;
-  width:24px;
+  width: 24px;
   background-color: lightsalmon;
 }
