@@ -1,6 +1,90 @@
-* { border: 0; padding: 0; margin: 0; }
-html, body { height: 100%; }
-body { display:flex; flex-flow: column wrap; }
-header, footer { background-color: #333; height: 2em; }
-#content { display:flex; flex-flow: column nowrap; flex: 4; background-color: #888; }
-#content div { margin:auto auto; }
+@font-face {
+  font-family: stamp;
+  src: url(/stamped.ttf);
+  font-weight: bold;
+}
+
+* {
+  border: 0;
+  padding: 0;
+  margin: 0;
+}
+
+a:link {
+  color: lightsalmon;
+  text-decoration: none;
+}
+
+a:visited {
+  color: inherit;
+}
+
+html, body {
+  height: 100vh;
+  box-sizing: border-box;
+  font-family: Georgia, serif;
+  font-weight: bolder;
+  color: lightsalmon;
+}
+
+body {
+  display: flex;
+  flex-flow: column nowrap;
+  background: url('/derves.jpg') no-repeat center center fixed;
+  background-size: cover;
+}
+
+header, footer {
+  background-color: #000;
+  height: 2.4em;
+  width: 100%;
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: center;
+  margin: auto auto;
+}
+
+header {
+  border-bottom: solid 1px salmon;
+}
+
+footer {
+  border-top: solid 1px salmon;
+}
+
+article {
+  margin: auto auto;
+  height: 100%;
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: center;
+  flex: 4;
+  background-color: rgba(255,255,255,0);
+  max-width: 996px;
+}
+
+article > p {
+  margin: auto auto;
+  font-family: stamp, sans-serif;
+  font-size: 5em;
+  font-stretch: ultra-expanded;
+  color: black;
+}
+
+.header, .footer {
+  height: 100%;
+  display: flex;
+  flex-flow: row wrap;
+  align-content: center;
+  justify-content: space-between;
+}
+
+.header {
+  width: 996px;
+}
+
+.header svg {
+  height: 24px;
+  width:24px;
+  background-color: lightsalmon;
+}
