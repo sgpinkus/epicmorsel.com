@@ -60,7 +60,7 @@
           </v-card>
         </v-dialog>
         <v-dialog
-          v-model="successResponse"
+          v-model="showSuccessDialog"
           @close="done"
         >
           <v-card>
@@ -209,6 +209,14 @@
       computed: {
         changed() {
           return Object.keys(this.formData).length;
+        },
+        showSuccessDialog: {
+          get() {
+            return !!this.successResponse;
+          },
+          set(v) {
+            if(!v) this.done();
+          }
         },
         emailSet() {
           return 'email' in this.formData;
