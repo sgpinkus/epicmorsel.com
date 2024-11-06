@@ -49,118 +49,118 @@
     </header>
     <article>
       <div id="app">
-          <v-dialog
-            v-model="showErrorDialog"
+        <v-dialog
+          v-model="showErrorDialog"
+        >
+          <v-card>
+            <v-card-title>ERROR</v-card-title>
+            <v-card-text>
+              {{ formErrorMessage || 'Unknown error' }}
+            </v-card-text>
+          </v-card>
+        </v-dialog>
+        <v-dialog
+          v-model="successResponse"
+          @close="done"
+        >
+          <v-card>
+            <v-card-title>SUCCESS</v-card-title>
+            <v-card-text>
+              {{ successResponse }}
+            </v-card-text>
+            <v-card-actions class="d-flex justify-end align-baseline" style="gap: 1rem">
+              <v-btn
+                color="blue-darken-1"
+                variant="text"
+                @click="done"
+              >
+                OK
+              </v-btn>
+            </v-card-actions>
+          </v-card>
+        </v-dialog>
+        <v-overlay :model-value="working" class="align-center justify-center">
+          <v-progress-circular
+            indeterminate
+            size="64"
+          ></v-progress-circular>
+        </v-overlay>
+        <v-card>
+          <v-form
+            ref="form"
+            v-model="valid"
+            lazy-validation
+            :disabled="!ready"
           >
-            <v-card>
-              <v-card-title>ERROR</v-card-title>
-              <v-card-text>
-                {{ formErrorMessage || 'Unknown error' }}
-              </v-card-text>
-            </v-card>
-          </v-dialog>
-          <v-dialog
-            v-model="successResponse"
-            @close="done"
-          >
-            <v-card>
-              <v-card-title>SUCCESS</v-card-title>
-              <v-card-text>
-                {{ successResponse }}
-              </v-card-text>
-              <v-card-actions class="d-flex justify-end align-baseline" style="gap: 1rem">
-                <v-btn
-                  color="blue-darken-1"
-                  variant="text"
-                  @click="done"
-                >
-                  OK
-                </v-btn>
-              </v-card-actions>
-            </v-card>
-          </v-dialog>
-          <v-overlay :model-value="working" class="align-center justify-center">
-            <v-progress-circular
-              indeterminate
-              size="64"
-            ></v-progress-circular>
-          </v-overlay>
-                <v-card>
-                <v-form
-                  ref="form"
-                  v-model="valid"
-                  lazy-validation
-                  :disabled="!ready"
-                >
-                  <div class='form-component'>
-                    <v-select
-                      v-model="formData.queryType"
-                      label="Query type"
-                      :items="queryType"
-                      item-title="title"
-                      item-value="value"
-                      :rules="required"
-                    ></v-select>
-                    <v-text-field
-                      v-model="formData.email"
-                      :rules="emailRules"
-                      type="email"
-                      label="Your Email"
-                    ></v-text-field>
-                    <v-text-field
-                      v-model="emailCopy"
-                      :rules="emailSet ? matchEmail : []"
-                      :disabled='!emailSet'
-                      type="email"
-                      label="Retype Your Email"
-                    ></v-text-field>
-                    <v-textarea
-                      v-model="formData.query"
-                      label="Your Query"
-                      :rules="required"
-                    ></v-textarea>
-                  </div>
-                  <div class='form-component'>
-                    <template v-if="requireCaptcha">
-                      <div class='captcha-img'>
-                        <img
-                          :src="captchaImage"
-                          alt="Waiting for captcha ..."
-                          style='color: gray'
-                        >
-                        </img>
-                      </div>
-                      <v-text-field
-                        v-model="captchaAnswer"
-                        :label="captchaAnswerLabel"
-                        :rules="required"
-                      ></v-text-field>
-                    </template>
-                    <template v-else>
-                      <div class='captcha-img'>
-                        <i style='margin: auto auto'>Captcha: We think your human &nbsp; <v-icon>mdi-check</v-icon></i>
-                      </div>
-                    </template>
-                  </div>
-                  <div class="d-flex justify-end align-baseline form-component" style="gap: 1rem">
-                    <v-btn
-                      color="white"
-                      class="mr-4"
-                      @click="cancel"
-                      :disabled="!ready"
-                    >
-                      Cancel
-                    </v-btn>
-                    <v-btn
-                      :disabled="!changed || !valid"
-                      color="black"
-                      @click="submit"
-                    >
-                      Submit
-                    </v-btn>
-                  </div>
-                </v-form>
-              </v-card>
+            <div class='form-component'>
+              <v-select
+                v-model="formData.queryType"
+                label="Query type"
+                :items="queryType"
+                item-title="title"
+                item-value="value"
+                :rules="required"
+              ></v-select>
+              <v-text-field
+                v-model="formData.email"
+                :rules="emailRules"
+                type="email"
+                label="Your Email"
+              ></v-text-field>
+              <v-text-field
+                v-model="emailCopy"
+                :rules="emailSet ? matchEmail : []"
+                :disabled='!emailSet'
+                type="email"
+                label="Retype Your Email"
+              ></v-text-field>
+              <v-textarea
+                v-model="formData.query"
+                label="Your Query"
+                :rules="required"
+              ></v-textarea>
+            </div>
+            <div class='form-component'>
+              <template v-if="requireCaptcha">
+                <div class='captcha-img'>
+                  <img
+                    :src="captchaImage"
+                    alt="Waiting for captcha ..."
+                    style='color: gray'
+                  >
+                  </img>
+                </div>
+                <v-text-field
+                  v-model="captchaAnswer"
+                  :label="captchaAnswerLabel"
+                  :rules="required"
+                ></v-text-field>
+              </template>
+              <template v-else>
+                <div class='captcha-img'>
+                  <i style='margin: auto auto'>Captcha: We think your human &nbsp; <v-icon>mdi-check</v-icon></i>
+                </div>
+              </template>
+            </div>
+            <div class="d-flex justify-end align-baseline form-component" style="gap: 1rem">
+              <v-btn
+                color="white"
+                class="mr-4"
+                @click="cancel"
+                :disabled="!ready"
+              >
+                Cancel
+              </v-btn>
+              <v-btn
+                :disabled="!changed || !valid"
+                color="black"
+                @click="submit"
+              >
+                Submit
+              </v-btn>
+            </div>
+          </v-form>
+        </v-card>
       </div>
     </article>
     <footer>
