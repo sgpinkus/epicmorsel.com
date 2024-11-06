@@ -56,7 +56,8 @@ article {
   margin: auto auto;
   height: 100%;
   display: flex;
-  flex-flow: column nowrap;
+  flex-flow: row nowrap;
+  align-items: center;
   justify-content: center;
   flex: 4;
   background-color: rgba(255,255,255,0);
